@@ -164,22 +164,26 @@ if uploaded_file:
     # ================= DATA CLEANING =================
     st.subheader("🧹 Data Cleaning Automation")
 
-    if st.button("Clean Data"):
+if st.button("Clean Data"):
 
-        original_rows = len(df_clean)
+    original_rows = len(df_clean)
 
-        df_clean = df_clean.drop_duplicates()
+    df_clean = df_clean.drop_duplicates()
 
-        removed = original_rows - len(df_clean)
+    removed = original_rows - len(df_clean)
 
-        for col in df_clean.columns:
-            if df_clean[col].dtype == "object":
-                df_clean[col] = df_clean[col].fillna("Unknown")
-            else:
-                df_clean[col] = df_clean[col].fillna(df_clean[col].mean())
+    for col in df_clean.columns:
 
-        st.success(f"✅ {removed} duplicates removed")
-        st.dataframe(df_clean.head())
+        # ✅ numeric columns only
+        if pd.api.types.is_numeric_dtype(df_clean[col]):
+            df_clean[col] = df_clean[col].fillna(df_clean[col].median())
+
+        # ✅ text columns
+        else:
+            df_clean[col] = df_clean[col].fillna("Unknown")
+
+    st.success(f"✅ {removed} duplicates removed")
+    st.dataframe(df_clean.head())
 
     # ================= CUSTOMER SEGMENTATION =================
     st.subheader("👥 Customer Segmentation")
