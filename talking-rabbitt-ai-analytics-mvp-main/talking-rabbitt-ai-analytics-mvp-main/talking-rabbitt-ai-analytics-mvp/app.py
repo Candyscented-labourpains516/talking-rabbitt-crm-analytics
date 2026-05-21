@@ -40,21 +40,12 @@ uploaded_file = st.file_uploader(
     type=["csv"]
 )
 
+df_clean = None 
+
 if uploaded_file:
 
     df = pd.read_csv(uploaded_file)
-
-    # Make a working copy (important for cleaning without breaking original)
     df_clean = df.copy()
-
-# report = df_clean.to_csv(index=False)
-
-# st.download_button(
-#     "⬇ Download Report",
-#     report,
-#     file_name="sales_report.csv",
-#     mime="text/csv"
-# )
 
     # ================= DATASET =================
     st.subheader("Dataset Preview")
@@ -250,11 +241,14 @@ if st.button("Send Email"):
 def convert_df(df):
     return df.to_csv(index=False).encode("utf-8")
 
-csv = convert_df(df_clean)
 
-st.download_button(
-    "⬇ Download Report",
-    csv,
-    "sales_report.csv",
-    "text/csv"
-)
+# ✅ FIX: only create download if df_clean exists
+if df_clean is not None:
+    csv = convert_df(df_clean)
+
+    st.download_button(
+        "⬇ Download Report",
+        csv,
+        "sales_report.csv",
+        "text/csv"
+    )
