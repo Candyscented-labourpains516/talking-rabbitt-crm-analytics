@@ -86,12 +86,8 @@ Talking Rabbitt Analytics is an intelligent business analytics dashboard that he
 ---
 
 ## 📁 Project Structure
-talking-rabbitt-analytics/
-├── app.py
-├── requirements.txt
-├── .env
-├── screenshots/
-└── README.md
+<img width="198" height="211" alt="image" src="https://github.com/user-attachments/assets/984b8725-018e-4e96-acca-2111fe20956d" />
+
 
 ---
 
