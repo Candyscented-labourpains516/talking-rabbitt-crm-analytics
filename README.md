@@ -140,6 +140,8 @@ streamlit run app.py
 <img width="857" height="317" alt="Screenshot 2026-05-21 210125" src="https://github.com/user-attachments/assets/d1c7c330-d1c5-4e0c-8ff7-dc3945ea7131" />
 
 
+<img width="739" height="228" alt="Screenshot 2026-05-21 225244" src="https://github.com/user-attachments/assets/bb18b1d4-4298-4902-ad26-a519bbbd6f7e" />
+
 ---
 
 ## 🔮 Future Scope
